@@ -15,16 +15,16 @@ function googleSignIn() {
             // This gives you a Google Access Token. You can use it to access the Google API.
         var token = result.credential.accessToken;
             // The signed-in user info.
-            user = result;
+        var user = result.user;
            //console.log(user);
         if(user) {
 
             //window.location.href ="http://localhost:8000/mainPage.html";
-            if($('#doctor').is(':checked')) { window.location="doctor.html?from=index"; }
-            if($('#nurse').is(':checked')) { window.location="nurse.html?from=index"; }
-            if($('#patient').is(':checked')) { window.location="patient.html?from=index"; }
-            if($('#caretaker').is(':checked')) { window.location="caretaker.html?from=index"; }
-            if($('#admin').is(':checked')) { window.location="admin.html?from=index"; }
+            if($('#doctor').is(':checked')) { window.location="doctor.html"; }
+            if($('#nurse').is(':checked')) { window.location="nurse.html"; }
+            if($('#patient').is(':checked')) { window.location="patient.html"; }
+            if($('#caretaker').is(':checked')) { window.location="caretaker.html"; }
+            if($('#admin').is(':checked')) { window.location="admin.html"; }
             console.log(user);
         }
         else{
