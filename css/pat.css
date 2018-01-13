@@ -251,3 +251,19 @@
 .mdl-demo .mdl-menu__container {
   z-index: 99;
 }
+
+#signOut {
+  float: left
+}
+
+span {
+  color: whitesmoke;
+}
+
+#medication_details {
+  font-size: 20px; 
+}
+
+#footter {
+  margin-top: 50px;
+}
