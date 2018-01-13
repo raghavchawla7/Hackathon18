@@ -42,8 +42,8 @@ body, html {
 	font-family: Poppins-Regular, sans-serif;
 }
 
-body {
-  background: #21d4fd;
+#background {
+  background-image: url("../images/login_page.jpg");
 }
 
 /*---------------------------------------------*/
