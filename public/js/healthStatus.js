@@ -17,11 +17,11 @@ var obj={
 	sugar_level:sugar_level,
 	hemo_globin:hemo_globin,
 	cholestrol:cholestrol,
-	body_temp:body_temp
+	body_temp:body_temp,
 	pulse_rate:pulse_rate
 }
 
-firebase.database().ref("healthStatus\"+email_patient).set(obj);
+firebase.database().ref("healthStatus\ " + email_patient).set(obj);
 
 if(problem==1){
 	var db_ref=firebase.database().ref("doctors_list/"+email_patient);
@@ -29,12 +29,12 @@ if(problem==1){
 		snapshot.forEach(function(childSnapshot){
 			var doctor_email=childSnapshot.key();
 			var doctor_name=null;
-			firebase.database().ref("doctors\"+doctor_email).once('value',function(snapshot){
+			firebase.database().ref("doctors\ " + doctor_email).once('value',function(snapshot){
 				doctor_name=snapshot.val().name;
 			})
-			var actual_email_doctor=firebase.database().ref("actual_email\"+doctor_email).val();
+			var actual_email_doctor=firebase.database().ref("actual_email\ " + doctor_email).val();
 			var patient_name=null;
-			firebase.database().ref("patient\"+email_patient).once('value',function(snapshot){
+			firebase.database().ref("patient\ " + email_patient).once('value', function(snapshot){
 				patient_name=snapshot.val().name;
 			})
 			sendNotification(doctor_name,patient_name,actual_email_doctor)

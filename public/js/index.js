@@ -17,10 +17,10 @@ function googleSignIn() {
                 console.log('user');
                 // window.location="patient.html";
                 //window.location.href ="http://localhost:8000/mainPage.html";
-                if($('#doctor').is(':checked')) { window.location="doctor.html"; }
+                if($('#doctor').is(':checked')) { window.location="/doctor"; }
                 // if($('#nurse').is(':checked')) { window.location="nurse.html"; }
-                if($('#patient').is(':checked')) { window.location="patient.html"; }
-                if($('#admin').is(':checked')) { window.location="admin.html" }
+                if($('#patient').is(':checked')) { window.location="/patient"; }
+                if($('#admin').is(':checked')) { window.location="/admin" }
                 console.log(user);
             } else {
                 console.log('else');

@@ -7,7 +7,7 @@ window.onload = function(ev) {
 var curUser = null;
 firebase.auth().onAuthStateChanged(user => {
   if(user == null) {
-    window.location = 'index.html'; //After successful login, user will be redirected to home.html
+    window.location = '/'; //After successful login, user will be redirected to home.html
   }
   else {
   	curUser = user;
@@ -17,7 +17,7 @@ firebase.auth().onAuthStateChanged(user => {
 function googleSignOut() {
     console.log('Hey');
     firebase.auth().signOut().then(function() {
-        window.location = 'index.html';
+        window.location = '/';
     }).catch(function(error) {
         // An error happened.
     });
@@ -27,7 +27,7 @@ var userName = curUser.displayName;
 $("#patient_name").value=userName;
 function displayHealthStatus(){	
 	var email=user.email;
-	var ref=firebase.database().ref('healthStaus/'+email);
+	var ref=firebase.database().ref('healthStatus/'+email);
 
 	ref.once('value',function(snapshot){
 		var str="<table>"+
