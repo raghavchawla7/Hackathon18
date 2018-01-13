@@ -1,25 +1,28 @@
-var curUser=null;
+var curUser;
 firebase.auth().onAuthStateChanged(user => {
-  if(user==null) {
-    window.location = 'index.html'; //After successful login, user will be redirected to home.html
+  if(user == null) {
+    window.location = '/'; //After successful login, user will be redirected to home.html
   }
   else{
+	console.log('user not null');
   	curUser=user;
   }
-
-});
-function  googleSignOut() {
-
-    console.log('HEy');
+}, callback);
+function googleSignOut() {
+    console.log('Hey');
     firebase.auth().signOut().then(function() {
-        window.location = 'index.html';
+        window.location = '/';
     }).catch(function(error) {
         // An error happened.
     });
 }
-var userName=curUser.displayName;
-$("#doctor_name").value=userName;
-function displayHealthStatus(){	
+function callback() {
+	console.log('cur ' + curUser);
+	var userName = curUser.displayName;
+	$("#doctor_name").value=userName;
+}
+
+function displayHealthStatus() {	
 	var email=user.email;
 	var ref=firebase.database().ref('healthStaus/'+email);
 
@@ -62,7 +65,7 @@ function displayPatients(){
 		$('#patients_list').append(str);
 	});
 }
-function showDetails(){
+function showDetails() {
 	var email=user.email;
 	var ref=firebase.database().ref('doctors/'+email);
 	ref.once('value',function(snapshot){

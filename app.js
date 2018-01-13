@@ -19,6 +19,11 @@ app.get('/admin', function (req,res) {
     res.sendFile(__dirname + '/views/admin.html');
 });
 
+app.get('/healthstatus', function (req,res) {
+    res.sendFile(__dirname + '/views/healthStatus.html');
+});
+
+
 app.listen(8000, function() {
     console.log("server is running");
 })

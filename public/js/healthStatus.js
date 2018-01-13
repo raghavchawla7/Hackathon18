@@ -11,7 +11,7 @@ if(heart_beat<60 ||heart_beat>100 ||blood_pressure<80 || blood_pressure>120||sug
 	cholestrol<100||cholestrol>129||body_temp<36.1||body_temp>37.2||pulse_rate<60||pulse_rate>100){
 	problem=1;
 }
-var obj={
+var obj = {
 	heart_beat:heart_beat,
 	blood_pressure:blood_pressure,
 	sugar_level:sugar_level,
@@ -20,21 +20,24 @@ var obj={
 	body_temp:body_temp,
 	pulse_rate:pulse_rate
 }
+function update_health() {
 
-firebase.database().ref("healthStatus\ " + email_patient).set(obj);
+}
 
-if(problem==1){
-	var db_ref=firebase.database().ref("doctors_list/"+email_patient);
+firebase.database().ref("healthStatus/" + email_patient).set(obj);
+
+if(problem == 1){
+	var db_ref=firebase.database().ref("doctors_list/" + email_patient);
 	db_ref.once('value',function(snapshot){
 		snapshot.forEach(function(childSnapshot){
 			var doctor_email=childSnapshot.key();
 			var doctor_name=null;
-			firebase.database().ref("doctors\ " + doctor_email).once('value',function(snapshot){
+			firebase.database().ref("doctors/" + doctor_email).once('value',function(snapshot){
 				doctor_name=snapshot.val().name;
 			})
-			var actual_email_doctor=firebase.database().ref("actual_email\ " + doctor_email).val();
+			var actual_email_doctor=firebase.database().ref("actual_email/" + doctor_email).val();
 			var patient_name=null;
-			firebase.database().ref("patient\ " + email_patient).once('value', function(snapshot){
+			firebase.database().ref("patient/" + email_patient).once('value', function(snapshot){
 				patient_name=snapshot.val().name;
 			})
 			sendNotification(doctor_name,patient_name,actual_email_doctor)

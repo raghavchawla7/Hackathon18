@@ -103,6 +103,10 @@ body {
   margin-top: 20px;
 }
 
+#update_health {
+  margin-top: 20px;
+}
+
 #sign_out {
   margin-top: 10px;
   background-color: rgb(253, 21, 21);
