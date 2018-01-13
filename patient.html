@@ -64,7 +64,7 @@
           <a href="#features" class="mdl-layout__tab">Details</a>
           <a href="#features" class="mdl-layout__tab">Technology</a>
           <a href="#features" class="mdl-layout__tab">FAQ</a> -->
-          <button class="mdl-button mdl-js-button mdl-button mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
+          <button onclick="googleSignOut()" class="mdl-button mdl-js-button mdl-button mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
             <span>Sign Out</span>
           </button>
         </div>
@@ -297,5 +297,9 @@
       </main>
     </div>
     <script src="js/material.min.js"></script>
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+    <script src="js/initFirebase.js"></script>
+    <script src="js/patient.js"></script>
   </body>
 </html>

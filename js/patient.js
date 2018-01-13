@@ -1,23 +1,29 @@
-var curUser=null;
+window.onload = function(ev) {
+	displayDoctors();
+	showDetails();
+	showMedicines();
+}
+
+var curUser = null;
 firebase.auth().onAuthStateChanged(user => {
-  if(user==null) {
+  if(user == null) {
     window.location = 'index.html'; //After successful login, user will be redirected to home.html
   }
-  else{
-  	curUser=user;
+  else {
+  	curUser = user;
   }
-
 });
-function  googleSignOut() {
 
-    console.log('HEy');
+function googleSignOut() {
+    console.log('Hey');
     firebase.auth().signOut().then(function() {
         window.location = 'index.html';
     }).catch(function(error) {
         // An error happened.
     });
 }
-var userName=curUser.displayName;
+
+var userName = curUser.displayName;
 $("#patient_name").value=userName;
 function displayHealthStatus(){	
 	var email=user.email;
@@ -41,11 +47,12 @@ function displayHealthStatus(){
 		$('#health_status').append(str);
 	});
 }
-function displayDoctors(){
-	var email=user.email;
-	var ref=firebase.database().ref('doctors_list/'+email);
 
-	ref.once('value',function(snapshot){
+function displayDoctors(){
+	var email = user.email;
+	var ref=firebase.database().ref('doctors_list/' + email);
+
+	ref.once('value', function(snapshot){
 		var str="<table>"+
         "<thead>"+
           "<tr>"+
@@ -63,6 +70,7 @@ function displayDoctors(){
 		$('#doctors_list').append(str);
 	});
 }
+
 function showDetails(){
 	var email=user.email;
 	var ref=firebase.database().ref('patients/'+email);
@@ -75,6 +83,7 @@ function showDetails(){
 	$("#patient_contact").value=contact;
 	$("#patient_address").value=address;
 };
+
 function showMedicines(){
 	var email=user.email;
 	var ref=firebase.database().ref('medicines/'+email);
@@ -94,6 +103,5 @@ function showMedicines(){
 		str+="</tbody>+</table>";
 		$('#medicines_list').append(str);
 	});
-
 }
 
